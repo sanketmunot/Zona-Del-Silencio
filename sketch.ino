@@ -1,6 +1,3 @@
-
-
- 
 #include <ESP8266WiFi.h>
 
 int normal = 0;//3
@@ -31,7 +28,6 @@ void loop() {
       Serial.print("emergency");
       if (digitalRead(ir) == HIGH) {
         Serial.print("wrong");
-
         if (client.connect(host, httpPort)) {
           String url = "/fine.php?mac="+WiFi.macAddress() ;
           client.print(String("GET ") + url + " HTTP/1.1\r\n" +
@@ -40,20 +36,15 @@ void loop() {
           digitalWrite(led,HIGH);
           delay(500);
           digitalWrite(led,LOW);                     
-
         }
         else {
           Serial.println("connection failed");
         }
-
-
       }
-
       digitalWrite(buzzer, HIGH);
       delay(500);
       digitalWrite(buzzer, LOW);
     }
-//Serial.println(digitalRead(emergency));
   }
   else {
 
